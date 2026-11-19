@@ -1,0 +1,22 @@
+# Supabase local config stubs for CLI (`supabase start` / `supabase db push`).
+# Auth for v1 is Google SSO only — enable the Google provider in the hosted
+# Supabase dashboard (Authentication → Providers → Google). Local CLI can
+# mirror that under [auth.external.google] when developing offline.
+
+[project]
+# Set via `supabase link` to Erin's existing hosted project; do not hardcode ids here.
+
+[auth]
+enabled = true
+# Prefer Google SSO for app login in v1 (no magic-link-only / email+password UX).
+enable_signup = true
+
+# Uncomment and fill when running local Supabase with Google OAuth:
+# [auth.external.google]
+# enabled = true
+# client_id = "env(GOOGLE_CLIENT_ID)"
+# secret = "env(GOOGLE_CLIENT_SECRET)"
+# redirect_uri = "http://127.0.0.1:54321/auth/v1/callback"
+
+[db]
+major_version = 15
