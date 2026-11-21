@@ -8,7 +8,7 @@ export default function Home() {
         Sprint Management
       </h1>
       <p className="max-w-md text-center text-zinc-600">
-        Phase 0 foundation is in place (schema + Auth stubs). Google SSO and UI
+        Phase 0 foundation is in place (schema + Auth stubs). Email/password auth and UI
         land in later phases — see{" "}
         <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-sm">
           docs/phase-0-setup.md

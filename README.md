@@ -6,9 +6,9 @@ Internal Project & Sprint Management app for Double the Donation.
 
 ## Phase 0
 
-Foundation only: App Router scaffold, Supabase migrations (schema + RLS), Auth/env stubs for Google SSO. No product UI yet.
+Foundation only: App Router scaffold, Supabase migrations (schema + RLS), Auth/env stubs for email + password. No product UI yet.
 
-Setup steps for linking your existing Supabase project, enabling Google, running migrations, and adding secrets:
+Setup steps for linking your existing Supabase project, enabling Email auth, running migrations, and adding secrets:
 
 → **[docs/phase-0-setup.md](docs/phase-0-setup.md)**
 

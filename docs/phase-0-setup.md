@@ -1,6 +1,8 @@
-# Phase 0 setup — link Supabase, Google SSO, migrations
+# Phase 0 setup — link Supabase, Email auth, migrations
 
 This repo scaffolds Next.js (App Router + TypeScript + Tailwind) and ships SQL under `supabase/migrations/`. Erin already has a Supabase project — **do not paste keys into chat**. Add secrets in Cursor / Vercel dashboards only.
+
+**Auth v1:** email + password. Google SSO is deferred (not required for Phase 0).
 
 ## 1. Link your existing Supabase project
 
@@ -16,18 +18,13 @@ npx supabase login
 npx supabase link --project-ref YOUR_PROJECT_REF
 ```
 
-## 2. Enable Google SSO (Auth v1 — Google only)
+## 2. Enable Email auth (Auth v1)
 
-1. Supabase → **Authentication → Providers → Google** → enable.
-2. Create OAuth credentials in [Google Cloud Console](https://console.cloud.google.com/) (OAuth client, Web application).
-3. Authorized redirect URI (hosted):
+1. Supabase → **Authentication → Providers → Email** → enable.
+2. Confirm email/password sign-up is allowed (disable “Confirm email” only if you intentionally want local-dev frictionless signup; for production, leave confirmations on as needed).
+3. Under **Authentication → URL Configuration**, set Site URL to your app (local `http://localhost:3000` or the Vercel URL) and add redirect allow-list entries for `/auth/callback` once Phase 1 lands.
 
-   `https://YOUR_PROJECT_REF.supabase.co/auth/v1/callback`
-
-4. Paste Client ID / Client Secret into the Google provider form in Supabase.
-5. Under **Authentication → URL Configuration**, set Site URL to your app (local `http://localhost:3000` or the Vercel URL) and add redirect allow-list entries for `/auth/callback` once Phase 1 lands.
-
-App code expects Google OAuth (`signInWithOAuth({ provider: 'google' })` in Phase 1). Do not enable magic-link / email+password as the primary UX for v1.
+App code will use `signInWithPassword` / `signUp` in Phase 1. Google SSO is **not** required for v1.
 
 ## 3. Apply migrations
 
@@ -55,6 +52,8 @@ That applies `supabase/migrations/20261119200000_phase0_foundation.sql` to the l
 - Multiple concurrent `active` sprints allowed (no unique constraint)
 - RLS helpers + policies (`view` can insert comments)
 - Points sync from size: XS/S/M/L/XL → 2/8/21/34/55; **no due date** column
+
+Auth provider choice is dashboard config — the schema is unchanged.
 
 ## 4. Secrets to add (Cursor + Vercel)
 
@@ -88,7 +87,7 @@ You should see the Phase 0 placeholder page. Login UI is Phase 1.
 
 ## 6. Erin checklist
 
-- [ ] Google provider enabled in Supabase Auth
+- [ ] Email provider enabled in Supabase Auth
 - [ ] Migration applied (`db push` or SQL Editor)
 - [ ] `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` added in Cursor secrets
 - [ ] Same three (plus optional `NEXT_PUBLIC_*`) on the Vercel project when deploying

@@ -1,22 +1,22 @@
 # Supabase local config stubs for CLI (`supabase start` / `supabase db push`).
-# Auth for v1 is Google SSO only — enable the Google provider in the hosted
-# Supabase dashboard (Authentication → Providers → Google). Local CLI can
-# mirror that under [auth.external.google] when developing offline.
+# Auth for v1 is email + password — enable the Email provider in the hosted
+# Supabase dashboard (Authentication → Providers → Email). Google SSO is deferred.
 
 [project]
 # Set via `supabase link` to Erin's existing hosted project; do not hardcode ids here.
 
 [auth]
 enabled = true
-# Prefer Google SSO for app login in v1 (no magic-link-only / email+password UX).
+# Prefer email + password for app login in v1 (Google SSO deferred).
 enable_signup = true
 
-# Uncomment and fill when running local Supabase with Google OAuth:
+[auth.email]
+enable_signup = true
+# enable_confirmations = true  # leave on for production; optional off for local frictionless signup
+
+# Google SSO deferred for v1 — do not require for Phase 0:
 # [auth.external.google]
-# enabled = true
-# client_id = "env(GOOGLE_CLIENT_ID)"
-# secret = "env(GOOGLE_CLIENT_SECRET)"
-# redirect_uri = "http://127.0.0.1:54321/auth/v1/callback"
+# enabled = false
 
 [db]
 major_version = 15

@@ -3,7 +3,7 @@ import { updateSession } from "@/lib/supabase/middleware";
 
 /**
  * Phase 0: session refresh only.
- * Phase 1 will protect /(app) and allow (auth) + invite routes; Google SSO only.
+ * Phase 1 will protect /(app) and allow (auth) + invite routes; email + password only.
  */
 export async function middleware(request: NextRequest) {
   return updateSession(request);

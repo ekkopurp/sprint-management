@@ -1,7 +1,7 @@
 -- Phase 0 foundation: enums, tables, FKs, indexes, soft-archive,
 -- profiles ↔ auth.users trigger, default kanban stages on workspace create,
 -- RLS helpers + policies.
--- Locked decisions: Google SSO (Auth dashboard), multi active sprints,
+-- Locked decisions: email + password auth (Auth dashboard; Google SSO deferred), multi active sprints,
 -- default stages To Do → … → Done (is_done only on Done), view can comment,
 -- ticket types include integration, priority high|medium|low,
 -- T-shirt points XS/S/M/L/XL → 2/8/21/34/55, no due date, one epic per ticket,

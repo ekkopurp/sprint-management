@@ -3,8 +3,8 @@
  * Browser clients need a public URL/anon key — prefer NEXT_PUBLIC_* when set,
  * otherwise fall back to SUPABASE_* (works for server; for browser, set public aliases in Vercel).
  *
- * Auth v1: Google SSO only. Configure the Google provider in Supabase Dashboard
- * (Authentication → Providers → Google). No magic-link / password UI in Phase 0+.
+ * Auth v1: email + password. Enable Email in Supabase Dashboard
+ * (Authentication → Providers → Email). Google SSO is deferred.
  */
 export function getSupabaseUrl(): string {
   const url =
