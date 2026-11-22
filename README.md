@@ -4,23 +4,32 @@ Internal Project & Sprint Management app for Double the Donation.
 
 **Stack:** Next.js App Router · TypeScript · Tailwind · Supabase · Vercel
 
-## Phase 0
+## Current phase
 
-Foundation only: App Router scaffold, Supabase migrations (schema + RLS), Auth/env stubs for email + password. No product UI yet.
+**Phase 1 — Auth shell:** email/password login + signup, session proxy, protected `/home` shell, sign out.
 
-Setup steps for linking your existing Supabase project, enabling Email auth, running migrations, and adding secrets:
-
-→ **[docs/phase-0-setup.md](docs/phase-0-setup.md)**
+| Doc | Purpose |
+|-----|---------|
+| [docs/phase-0-setup.md](docs/phase-0-setup.md) | Link Supabase, Email provider, migrations, secrets |
+| [docs/phase-1-auth.md](docs/phase-1-auth.md) | Local auth test (`.env.local`, Site URL, confirm-email) |
 
 ### Secrets (never commit)
+
+Server / Cursor / Vercel:
 
 - `SUPABASE_URL`
 - `SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
 
+Browser client (required for login/signup/sign-out in the browser):
+
+- `NEXT_PUBLIC_SUPABASE_URL` (same value as `SUPABASE_URL`)
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` (same value as `SUPABASE_ANON_KEY`)
+
 ### Scripts
 
 ```bash
+cp .env.example .env.local   # fill keys locally
 npm install
 npm run dev
 npm run build

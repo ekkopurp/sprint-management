@@ -83,7 +83,7 @@ npm install
 npm run dev
 ```
 
-You should see the Phase 0 placeholder page. Login UI is Phase 1.
+Phase 1 auth UI: see **[phase-1-auth.md](./phase-1-auth.md)** (`/login`, `/signup`, `/home`).
 
 ## 6. Erin checklist
 
