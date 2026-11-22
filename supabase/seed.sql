@@ -1,0 +1,12 @@
+-- Local/dev seed mirror of default kanban stages.
+-- Production seeding happens via handle_new_workspace → seed_default_kanban_stages.
+-- This file is for local supabase db reset convenience only.
+--
+-- Default stages (locked):
+-- 1 To Do
+-- 2 In Progress
+-- 3 Staging/QA
+-- 4 PR for Review
+-- 5 Waiting for Deploy
+-- 6 Deployed (PO to Check)
+-- 7 Done (is_done = true only)

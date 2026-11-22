@@ -1,0 +1,22 @@
+# Supabase local config stubs for CLI (`supabase start` / `supabase db push`).
+# Auth for v1 is email + password — enable the Email provider in the hosted
+# Supabase dashboard (Authentication → Providers → Email). Google SSO is deferred.
+
+[project]
+# Set via `supabase link` to Erin's existing hosted project; do not hardcode ids here.
+
+[auth]
+enabled = true
+# Prefer email + password for app login in v1 (Google SSO deferred).
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+# enable_confirmations = true  # leave on for production; optional off for local frictionless signup
+
+# Google SSO deferred for v1 — do not require for Phase 0:
+# [auth.external.google]
+# enabled = false
+
+[db]
+major_version = 15
