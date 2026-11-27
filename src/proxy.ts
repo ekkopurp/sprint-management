@@ -2,10 +2,11 @@ import { type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
 /**
- * Phase 0: session refresh only.
- * Phase 1 will protect /(app) and allow (auth) + invite routes; email + password only.
+ * Next.js 16 proxy (replaces deprecated middleware.ts).
+ * Refreshes the Supabase session and guards /(app) routes.
+ * Auth v1: email + password only (Google SSO deferred).
  */
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   return updateSession(request);
 }
 
